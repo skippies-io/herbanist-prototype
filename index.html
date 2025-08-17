@@ -4,11 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Herbanist Wellness</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <nav>
+  <header class="site-header">
+    <nav class="nav container">
       <div class="logo">HERBANIST</div>
       <ul class="nav-links">
         <li><a href="#">Home</a></li>
@@ -16,51 +18,86 @@
         <li><a href="#about">About</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <div class="cart" onclick="toggleCart()">Cart <span id="cart-count">2</span></div>
+      <button class="cart-btn" onclick="toggleCart()">
+        <span>Cart</span>
+        <span id="cart-count" class="cart-count">0</span>
+      </button>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>NATURAL REMEDIES FOR MODERN WELLNESS</h1>
-    <p>Explore our selection of high-quality cannabis products and herbal wellness essentials.</p>
-    <button onclick="scrollToShop()">Shop Now</button>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>NATURAL REMEDIES FOR<br />MODERN WELLNESS</h1>
+        <p>Explore our selection of high-quality cannabis products and herbal wellness essentials.</p>
+        <button class="primary" onclick="scrollToShop()">Shop Now</button>
+      </div>
+      <div class="hero-art"></div>
+    </div>
   </section>
 
   <section id="shop" class="products">
-    <h2>Featured Products</h2>
-    <div class="product-grid">
-      <div class="product" onclick="addToCart('Relief Hemp Oil', 500)">
-        <img src="https://via.placeholder.com/100" alt="Relief Hemp Oil" />
-        <p>Relief Hemp Oil</p>
-        <span>R 500</span>
-      </div>
-      <div class="product" onclick="addToCart('Calming Balm', 350)">
-        <img src="https://via.placeholder.com/100" alt="Calming Balm" />
-        <p>Calming Balm</p>
-        <span>R 350</span>
-      </div>
-      <div class="product" onclick="addToCart('Herbal Cannabis', 700)">
-        <img src="https://via.placeholder.com/100" alt="Herbal Cannabis" />
-        <p>Herbal Cannabis</p>
-        <span>R 700</span>
+    <div class="container">
+      <h2>Featured Products</h2>
+      <div class="product-grid">
+        <!-- Product 1 -->
+        <button class="product" onclick="addToCart('Relief Hemp Oil', 500)">
+          <img
+            alt="Relief Hemp Oil"
+            src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240"><rect width="100%" height="100%" fill="%23eaf0e9"/><circle cx="160" cy="120" r="60" fill="%23c7d7c2"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="16" fill="%23505a52">Relief Hemp Oil</text></svg>'
+          />
+          <p class="p-name">Relief Hemp Oil</p>
+          <span class="price">R 500</span>
+        </button>
+
+        <!-- Product 2 -->
+        <button class="product" onclick="addToCart('Calming Balm', 350)">
+          <img
+            alt="Calming Balm"
+            src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240"><rect width="100%" height="100%" fill="%23f3efe7"/><rect x="80" y="70" width="160" height="100" rx="14" fill="%23d8cab5"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="16" fill="%23505a52">Calming Balm</text></svg>'
+          />
+          <p class="p-name">Calming Balm</p>
+          <span class="price">R 350</span>
+        </button>
+
+        <!-- Product 3 -->
+        <button class="product" onclick="addToCart('Herbal Cannabis', 700)">
+          <img
+            alt="Herbal Cannabis"
+            src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240"><rect width="100%" height="100%" fill="%23ece6d9"/><path d="M160 60 l20 40 -40 0 z" fill="%2390a08f"/><circle cx="160" cy="150" r="50" fill="%23cfd8cf"/><text x="50%" y="90%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="16" fill="%23505a52">Herbal Cannabis</text></svg>'
+          />
+          <p class="p-name">Herbal Cannabis</p>
+          <span class="price">R 700</span>
+        </button>
       </div>
     </div>
   </section>
 
-  <div id="cart-panel" class="cart-panel hidden">
-    <h3>Cart</h3>
-    <ul id="cart-items"></ul>
-    <p>Subtotal: R <span id="cart-subtotal">0</span></p>
-    <button>Checkout</button>
-  </div>
+  <aside id="cart-panel" class="cart-panel hidden">
+    <div class="cart-head">
+      <h3>Your Cart</h3>
+      <button class="icon-btn" aria-label="Close cart" onclick="toggleCart()">✕</button>
+    </div>
+    <ul id="cart-items" class="cart-items"></ul>
+    <div class="cart-footer">
+      <div class="row">
+        <span>Subtotal</span>
+        <strong>R <span id="cart-subtotal">0</span></strong>
+      </div>
+      <button class="primary wide">Checkout</button>
+    </div>
+  </aside>
 
-  <footer>
-    <p>HERBANIST</p>
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
-      <a href="#">Shipping</a>
-      <a href="#">Returns</a>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="f-brand">HERBANIST</div>
+      <div class="f-links">
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+      </div>
+      <div class="f-copy">© <span id="year"></span> Herbanist Wellness</div>
     </div>
   </footer>
 
